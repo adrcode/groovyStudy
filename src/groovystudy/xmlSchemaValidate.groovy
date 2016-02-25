@@ -47,9 +47,30 @@ class xmlSchemaValidate {
         return flag
     }   
     
-    boolean schemaStrCheck() {
-        
-    }
+    
+    def boolean schemaStrCheck(String xmlStr, String xsdPath) {
+         boolean flag = false
+         try {           
+            SchemaFactory factory = SchemaFactory.newInstance(SCHEMALANG)
+            File xsdFile = new File(xsdPath)
+             
+            Schema xmlSchema = factory.newSchema(xsdFile)
+            Validator check = xmlSchema.newValidator()
+            
+            InputStream is = new ByteArrayInputStream(xmlStr.getBytes())
+            Source source = new StreamSource(is)
+            
+            try {
+                check.validate(source)
+                flag = true
+            } catch(SAXException ex) {
+                println ex.getMessage()
+            }           
+         } catch(Exception e) {
+             println e.getMessage()
+         }
+        return flag
+    }  
     
     
     public static void main(args) {
@@ -57,6 +78,9 @@ class xmlSchemaValidate {
         def xsdPath = "D:\\Automated\\XML_Schema\\Hello\\hello.xsd"
         println new xmlSchemaValidate().schemaFileCheck(xmlPath, xsdPath)
        
+        def xmlStr = '''<?xml version = "1.0"?><greeting>Hello World!</greeting>'''
+        println new xmlSchemaValidate().schemaStrCheck(xmlStr, xsdPath)
+        
     }
 }
 
