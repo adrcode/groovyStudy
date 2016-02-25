@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="GBK" ?>  
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">  
+  
+<xs:element name="B2CReq">  
+    <xs:complexType>  
+      <xs:all>  
+  
+        <xs:element name="merId">  
+            <xs:simpleType>  
+              <xs:restriction base="xs:string">  
+                <xs:minLength value="1"/>  
+                <xs:maxLength value="20"/>  
+              </xs:restriction>  
+            </xs:simpleType>  
+        </xs:element>  
+  
+        <xs:element name="orderNo">  
+            <xs:simpleType>  
+              <xs:restriction base="xs:string">  
+                <xs:minLength value="1"/>  
+                <xs:maxLength value="30"/>  
+              </xs:restriction>  
+            </xs:simpleType>  
+        </xs:element>  
+  
+        <xs:element name="orderAmt">  
+            <xs:simpleType>  
+              <xs:restriction base="xs:decimal">  
+                <xs:pattern value="[\d]{0,16}\.[\d]{2}"/>  
+              </xs:restriction>  
+            </xs:simpleType>  
+        </xs:element>  
+  
+        <xs:element name="point">  
+            <xs:simpleType>  
+              <xs:restriction base="xs:integer">  
+                <xs:minInclusive value="0"/>  
+                <xs:maxInclusive value="99999999999999999999999999999"/>  
+              </xs:restriction>  
+            </xs:simpleType>  
+        </xs:element>  
+  
+        <xs:element name="account">  
+            <xs:simpleType>  
+              <xs:restriction base="xs:string">  
+                <xs:minLength value="1"/>  
+                <xs:maxLength value="18"/>  
+              </xs:restriction>  
+            </xs:simpleType>  
+        </xs:element>  
+  
+        <xs:element name="custName">  
+            <xs:simpleType>  
+              <xs:restriction base="xs:string">  
+                <xs:minLength value="1"/>  
+                <xs:maxLength value="50"/>  
+              </xs:restriction>  
+            </xs:simpleType>  
+        </xs:element>  
+  
+        <xs:element name="certNo">  
+            <xs:simpleType>  
+              <xs:restriction base="xs:string">  
+                <xs:minLength value="1"/>  
+                <xs:maxLength value="50"/>  
+              </xs:restriction>  
+            </xs:simpleType>  
+        </xs:element>  
+  
+        <xs:element name="orderDate">  
+            <xs:simpleType>  
+              <xs:restriction base="xs:string">  
+                <xs:pattern value="[1-9][\d]{3}(1[012]|0[1-9])([012][0-9]|3[01])([01][\d]|2[0-4])([0-5][\d]|60)([0-5][\d]|60)"/>  
+              </xs:restriction>  
+            </xs:simpleType>  
+        </xs:element>  
+  
+        <xs:element name="curType">  
+            <xs:simpleType>  
+              <xs:restriction base="xs:string">  
+                <xs:enumeration value="CNY"/>  
+              </xs:restriction>  
+            </xs:simpleType>  
+        </xs:element>   
+  
+        <xs:element name="notifyURL">  
+            <xs:simpleType>  
+              <xs:restriction base="xs:anyURI">  
+                <xs:minLength value="1"/>  
+                <xs:maxLength value="300"/>  
+              </xs:restriction>  
+            </xs:simpleType>  
+        </xs:element>  
+          
+        <xs:element name="remark">  
+            <xs:simpleType>  
+              <xs:restriction base="xs:string">  
+                <xs:minLength value="1"/>  
+                <xs:maxLength value="100"/>  
+              </xs:restriction>  
+            </xs:simpleType>  
+        </xs:element>  
+  
+      </xs:all>  
+    </xs:complexType>  
+</xs:element>  
+  
+</xs:schema>  

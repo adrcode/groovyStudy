@@ -36,8 +36,9 @@ public class SeleniumTest1 {
         WebElement username = driver.findElement(By.name("log")); 
         username.sendKeys("asun");
         WebElement pwd = driver.findElement(By.name("pwd")); 
-        pwd.sendKeys("Kwan_9888");
+        pwd.sendKeys("Kwan_9123");
         WebElement login = driver.findElement(By.id("go_submit"));
+//        WebElement login = driver.findElement(By.cssSelector("css=#go_submit"));    
         login.click();
         wait.until(new ExpectedCondition<WebElement>(){  
             @Override

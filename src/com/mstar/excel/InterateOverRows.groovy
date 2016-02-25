@@ -20,17 +20,19 @@ import com.mstar.excel.ResultAnalyze
  *
  * @author asun
  */
+
 class InterateOverRows {
     
     def fileTestResult
     def sourceFile
     def destFile
-    
+
     InterateOverRows(fileTestResult, sourceFile, destFile) {
         this.fileTestResult = fileTestResult
         this.sourceFile = sourceFile
         this.destFile = destFile
     }
+ 
     
     def separateTCs(caseStatus){
         def result = new ResultAnalyze(fileTestResult)
@@ -88,10 +90,10 @@ class InterateOverRows {
     }
     
     static void main(args) {
-            def pass = new InterateOverRows('result_20151201033534.txt', 'source - Copy.xls', 'passedCases.xls')
-            def fail = new InterateOverRows('result_20151201033534.txt', 'source - Copy.xls', 'failedCases.xls')
-            pass.separateTCs('Pass')
-            fail.separateTCs('Fail')
+//        def pass = new InterateOverRows('result_20151214033634.txt', 'fasttrackEQsource.xls', 'passedCases.xls')
+        def fail = new InterateOverRows('result_20151214062657.txt', 'failedCases_2.xls', 'failedCases_3.xls')
+//        pass.separateTCs('Pass')
+        fail.separateTCs('Fail')
 
     }
 }
