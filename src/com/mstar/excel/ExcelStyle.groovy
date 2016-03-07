@@ -17,6 +17,11 @@ import org.apache.poi.hssf.usermodel.HSSFRichTextString
 
 import org.apache.poi.hssf.util.HSSFColor
 import org.apache.poi.hssf.util.Region
+import org.apache.poi.ss.usermodel.CellStyle
+
+import org.apache.poi.xssf.usermodel.XSSFCellStyle
+import org.apache.poi.xssf.usermodel.XSSFColor
+import org.apache.poi.ss.usermodel.IndexedColors
 
 
 /**
@@ -32,15 +37,15 @@ class ExcelStyle {
             HSSFCellStyle cellStyle = wb.createCellStyle()
             HSSFFont font = wb.createFont()
             HSSFFont font2 = wb.createFont()
-        
+            
             //#########################1. Set the column width ####################
             sheet.setColumnWidth(0, 3000)      //Column: 0,  Width: 6000
-        
+
             //#########################2. Set the foreground color #################### 
             cellStyle.setFillForegroundColor(HSSFColor.LIGHT_YELLOW.index)
  //           cellStyle.setFillForegroundColor((short) 13)
             cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND)
-            
+      
             //########################3. Set the Border ##############################
             cellStyle.setBorderBottom(HSSFCellStyle.BORDER_THIN)
             cellStyle.setBottomBorderColor(HSSFColor.RED.index)

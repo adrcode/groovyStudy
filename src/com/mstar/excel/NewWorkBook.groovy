@@ -7,6 +7,8 @@
 package com.mstar.excel
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
+import org.apache.poi.ss.usermodel.WorkbookFactory
+import org.apache.poi.ss.usermodel.Workbook
 import org.apache.poi.hssf.usermodel.HSSFSheet
 import org.apache.poi.hssf.usermodel.HSSFRow
 import org.apache.poi.hssf.usermodel.HSSFCell
@@ -23,7 +25,7 @@ import org.apache.poi.xssf.usermodel.XSSFCell
  * @author asun
  */
 class NewWorkBook {
-    static void main(args){
+    static void main(args) throws IOException{
         //########################.xls file##################
         HSSFWorkbook wb = new HSSFWorkbook()     
         FileOutputStream fileOut = new FileOutputStream("failedCases.xls")  
@@ -38,7 +40,7 @@ class NewWorkBook {
         
          //########################.xlsx file##################
          FileOutputStream fileOut2 = new FileOutputStream("failedCases.xlsx")
-         XSSFWorkbook wb2 = new XSSFWorkbook()
+         Workbook wb2 = new XSSFWorkbook()
          XSSFSheet sheet2 = wb2.createSheet("new sheet")           //Add a Sheet for the excel file
          XSSFRow row2 = sheet2.createRow(0)              //Add a Row
          XSSFCell cell2 = row2.createCell(0)             //Add a Cell 
@@ -46,5 +48,6 @@ class NewWorkBook {
          
         wb2.write(fileOut2)
         fileOut2.close()
+        
     }
 }
