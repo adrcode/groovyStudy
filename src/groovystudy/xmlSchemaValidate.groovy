@@ -74,12 +74,12 @@ class xmlSchemaValidate {
     
     
     public static void main(args) {
-        def xmlPath = "D:\\Automated\\XML_Schema\\Hello\\hello.xml"
-        def xsdPath = "D:\\Automated\\XML_Schema\\Hello\\hello.xsd"
+        def xmlPath = "D:\\Automated\\XML_Schema\\custom\\custom.xml"
+        def xsdPath = "D:\\Automated\\XML_Schema\\custom\\custom.xsd"
         println new xmlSchemaValidate().schemaFileCheck(xmlPath, xsdPath)
        
-        def xmlStr = '''<?xml version = "1.0"?><greeting>Hello World!</greeting>'''
-        println new xmlSchemaValidate().schemaStrCheck(xmlStr, xsdPath)
+//        def xmlStr = '''<?xml version = "1.0"?><greeting>Hello World!</greeting>'''
+//        println new xmlSchemaValidate().schemaStrCheck(xmlStr, xsdPath)
         
     }
 }

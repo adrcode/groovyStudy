@@ -20,6 +20,7 @@ import org.codehaus.groovy.control.CompilerConfiguration
 import org.apache.poi.hssf.usermodel.HSSFSheet
 import org.apache.poi.hssf.usermodel.HSSFRow
 import org.apache.poi.hssf.usermodel.HSSFCell
+import java.lang.reflect.Method
 
 import static org.junit.Assert.*
 
@@ -177,58 +178,34 @@ class Test {
 //            println i
 //            println j
 //        }
-
-        def a = "Open-End Fund::Anclassified".tokenize("::")
-        println a.sort()
-//        a.eachWithIndex{value, index ->
-//            println value
-//            println index     
-//        }
-
-        def xmlStr = '''<Results>
-        <ResultSet fetchSize="128">
-            <Row rowNumber="1">
-                <ID>F00000M8DC</ID>
-                <SRA01>1</SRA01>
-                </Row>
-            </ResultSet>
-         </Results>
-         '''    
+        def xmlStr = '''\n\
+        <records>  
+	<car name='HSV Maloo' make='Holden' year='2006'>  
+		<country>Australia</country>  
+		<record type='speed'>Production Pickup Truck with speed of 271kph</record>  
+	</car>  
+	<car name='P50' make='Peel' year='1962'>  
+		<country>Isle of Man</country>  
+		<record type='size'>Smallest Street-Legal Car at 99cm wide and 59 kg in weight</record>  
+	</car>  
+	<car name='Royale' make='Bugatti' year='1931'>  
+		<country>France</country>  
+		<record type='price'>Most Valuable Car at $15 million</record>  
+	</car>  
+        </records> 
+        '''
+        
         def xml = new XmlSlurper().parseText(xmlStr)
-        def xml2 = new XmlParser().parseText(xmlStr)
-//        println xml2.ResultSet.Row[0].children()
-        xml.ResultSet.Row[0].children().each{println it}
-        4.times{i ->
-            println i
+        println xml.depthFirst().grep{it.@type != ''}.'@type'.toString()
+        def record = xml.car.record
+        def nodes = xml.childNodes()
+        nodes.each{node ->
+            println node.name
+            println node.children.name
+            println node.children[0].text()
+//            println node.country.text()
+//            println node.record.text()
         }
-        
-       def t = "null,1,null,2"
-       println new HashSet(t.tokenize(','))
-        
-//        def groovyClasspath = "D:\\DATA_API_V2\\SoapUI\\ScriptLib\\com\\mstar\\dataapi\\qa\\util"
-//        String[] roots = [groovyClasspath]
-//        def engine = new GroovyScriptEngine(roots)
-//        def testGroovyGen = engine.loadScriptByName('Test.groovy')
-//        def testGroovyGen2 = engine.loadScriptByName('Test2.groovy')
-//        def testGroovy = testGroovyGen.newInstance()
-//        def testGroovy2 = testGroovyGen2.newInstance()
-//        println testGroovy.testInfo()
-//        println testGroovy2.testInfo()
-        
-        try {
-            def pStr = "abc"
-            def pDouble = Double.valueOf(pStr)
-        } catch(NumberFormatException e) {
-            println "11111111"
-        }
-        
-        def expected = null
-        def nullValues = ["",null,"null"]
-        def result = nullValues.contains(expected)
-        println result
-        
-        def test1 = [""]
-        println test1.grep{it}.size()
     }
     
 }

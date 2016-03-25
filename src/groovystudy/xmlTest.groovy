@@ -6,7 +6,9 @@
 
 package groovystudy
 
+import com.sun.javafx.collections.transformation.Matcher
 import groovy.xml.*
+import javax.swing.text.Document
 
 /**
  *
@@ -40,6 +42,7 @@ class xmlTest {
 ////                      println s.attribute("op")
 ////                  }
 //              }  
+         
         }
         
         def getOpFromIdMapping(file, dpId) {
@@ -56,7 +59,7 @@ class xmlTest {
             if(option == null)
                 throw new Exception("Could not find the data point id in file DataIdMapping.xml !")
         }
-        
+
         def parseToApiValue(file, option, directRes) {            
             def xml = new XmlParser()
             def xmlChoice = xml.parse(file)
@@ -73,5 +76,7 @@ class xmlTest {
                 }
             }
         }
+        
+        
 }
 
